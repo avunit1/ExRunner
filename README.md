@@ -1,6 +1,6 @@
 # ExRunner 
 
-<img src="https://i.imgur.com/eA6clZr.png">
+<img src="https://raw.githubusercontent.com/avunit1/ExRunner/main/banner.png">
 
 ### Multi installer tool
 
