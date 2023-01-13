@@ -1,5 +1,7 @@
 # ExRunner 
 
+<img src="https://i.imgur.com/eA6clZr.png">
+
 ### Multi installer tool
 
 ExRunner will help you bulk-install multiple exe type installers.
