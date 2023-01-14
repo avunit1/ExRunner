@@ -14,7 +14,7 @@ Once you have selected the files, ExRunner will automatically install them in th
 
 Firstly, make sure you have python installed. You can grab the latest version here: https://www.python.org/downloads/
 
-Next, after you install python, open up CMD and type in the following command:
+Next, after you install python open up CMD and type in the following command:
 
 ```sh
 pip install pillow pywin32
