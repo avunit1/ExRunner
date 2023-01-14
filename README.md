@@ -13,7 +13,11 @@ Once you have selected the files, ExRunner will automatically install them in th
 ### Let's Install
 
 Firstly, make sure you have python installed. You can grab the latest version here: https://www.python.org/downloads/
+
 Next, after you install python, open up CMD and type in the following command:
+
 ```pip install pillow pywin32```
+
 After you have done this, right click the zip file you have downloaded from https://github.com/avunit1/ExRunner/releases and click extract. You can use the built-in Windows tool, or you can use a tool like WinRar or 7zip.
+
 Once you have extracted, open the extracted folder, and run ExRunner.exe as administrator and you're done!
