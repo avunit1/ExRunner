@@ -8,7 +8,7 @@ ExRunner is a powerful and user-friendly tool that makes it easy for you to inst
 
 # How does it work?
 
-Once you have selected the files, ExRunner will automatically install them in the background, saving you time and hassle. The program also has a built-in integrity check feature that ensures that the executables you are installing have not been tampered with. This provides an added layer of security and peace of mind, ensuring that you are only installing safe and verified files.
+Once you have selected the files, ExRunner will automatically install them in the background, saving you time and hassle. The program also has a built-in integrity check feature that ensures that the ExRunner executable you are running has not been tampered with. This provides an added layer of security and peace of mind, ensuring that you are only running safe and verified files.
 
 # Let's Install
 
