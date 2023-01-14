@@ -16,7 +16,9 @@ Firstly, make sure you have python installed. You can grab the latest version he
 
 Next, after you install python, open up CMD and type in the following command:
 
-```pip install pillow pywin32```
+```sh
+pip install pillow pywin32
+```
 
 After you have done this, right click the zip file you have downloaded from https://github.com/avunit1/ExRunner/releases and click extract. You can use the built-in Windows tool, or you can use a tool like WinRar or 7zip.
 
