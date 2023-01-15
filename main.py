@@ -62,7 +62,7 @@ class AIT(tk.Tk):
         self.title("ExRunner")
         self.iconbitmap("images/icon.ico")
         self.geometry("700x800")
-        self.configure(bg='white')
+        self.configure(bg='#1e1e1e')
         self.resizable(False, False)
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
@@ -70,53 +70,57 @@ class AIT(tk.Tk):
 
         # banner
         self.icon = ImageTk.PhotoImage(Image.open("images/banner.png").resize((500, 280)))
-        self.icon_label = tk.Label(self, image=self.icon, bg ='white')
+        self.icon_label = tk.Label(self, image=self.icon, bg ='#1e1e1e')
         self.icon_label.grid(row=0, column=0, padx=0, pady=0, ipadx=0, ipady=0)
         self.icon_label.place(relx=0.5, rely=0.1, y=63, anchor="center")
 
         # folder path entry and button
         self.folder_path = tk.StringVar()
-        self.folder_entry = tk.Entry(self, textvariable=self.folder_path, width=50, bg='white', relief='solid', borderwidth=1)
+        self.folder_entry = tk.Entry(self, textvariable=self.folder_path, width=50, bg='#323232', fg='#f6f6f6', relief='solid', borderwidth=1)
         self.folder_entry.grid(row=2, column=0, padx=0, pady=0, ipadx=0, ipady=0)
         self.folder_entry.place(relx=0.5, rely=0.3, y=107, anchor="center")
-        self.folder_entry.config(state='normal')
+        self.folder_entry.configure(state='normal')
+        self.folder_entry.delete(0, 'end')
+        self.folder_entry.configure(background='#323232', foreground='white')
         self.folder_entry.insert(0, "Selected directory will be shown here...")
-        self.folder_entry.config(state='disabled', justify='center')
-        self.folder_entry.configure(foreground='black')
-        self.folder_entry.bind('<FocusIn>', lambda x: self.folder_entry.configure(foreground='black'))
-        self.folder_entry.bind('<FocusOut>', lambda x: self.folder_entry.configure(foreground='black'))
+        self.folder_entry.config(justify='center')
+        self.folder_entry.configure(bg='#323232', fg='#f6f6f6')
+        self.folder_entry.bind('<FocusIn>', lambda x: self.folder_entry.configure(foreground='white'))
+        self.folder_entry.bind('<FocusOut>', lambda x: self.folder_entry.configure(foreground='white'))
 
-        self.folder_button = tk.Button(self, text="Select executables folder", command=self.select_folder, width=20, height=2)
+        self.folder_button = tk.Button(self, text="Select executables folder", command=self.select_folder, width=20, height=2, bg='#323232', fg='#f6f6f6')
         self.folder_button.grid(row=3, column=0, padx=0, pady=0, ipadx=0, ipady=0)
         self.folder_button.place(relx=0.5, rely=0.4, y=-13, anchor="center")
+        self.folder_button.configure(fg='#f6f6f6')
 
         # start install button
-        self.start_button = tk.Button(self, text="Start Installing", command=self.start_install, width=20, height=2)
+        self.start_button = tk.Button(self, text="Start Installing", command=self.start_install, width=20, height=2, bg='#323232', fg='#f6f6f6')
         self.start_button.grid_forget()
         self.start_button.grid(row=6, column=0, padx=20, pady=20, ipadx=0, ipady=0)
         self.start_button.place(relx=0.5, rely=0.95, y=-353, anchor="s")
+        self.start_button.configure(fg='#f6f6f6')
 
         self.bottom_frame = tk.Frame(self, bg='white')
         self.bottom_frame.place(relx=0.5, rely=1, y=-20, anchor="s")
 
         # output log text box
-        self.output_log = tk.Text(self, height=20, width=84, relief='solid', borderwidth=1)
+        self.output_log = tk.Text(self, height=20, width=84, relief='solid', borderwidth=1, bg='#323232', fg='#f6f6f6')
         self.output_log.grid_forget()
         self.output_log.grid(row=5, column=0, padx=0, pady=0, ipadx=0, ipady=0)
         self.output_log.place(relx=0.5, rely=0.6, y=100, anchor="center")
         self.output_log.config(state='normal')
         self.output_log.insert("1.0", "# Log goes here: \n", "grey_tag")
         self.output_log.config(state='disabled')
-        self.output_log.tag_config("grey_tag", foreground='grey')
+        self.output_log.tag_config("grey_tag", foreground='#c5c5c5')
 
         # link button
-        self.link_button = tk.Label(self, text="https://avunit.tk/", fg="blue", cursor="hand2", font=("Comic CAT", 12), bg="white")
+        self.link_button = tk.Label(self, text="https://avunit.tk/", fg="#44a6c6", cursor="hand2", font=("Comic CAT", 12), bg="#1e1e1e")
         self.link_button.grid(row=8, column=0, padx=20, pady=20, ipadx=0, ipady=0)
         self.link_button.place(relx=0.5, rely=1, y=-25, anchor="s")
         self.link_button.bind("<Button-1>", lambda e: webbrowser.open_new("https://avunit.tk/"))
 
         # copyright text
-        self.copyright_text = tk.Label(self, text="©2023 avunit", font=("Comic CAT", 12), bg='white', fg='grey')
+        self.copyright_text = tk.Label(self, text="©2023 avunit", font=("Comic CAT", 12), bg='#1e1e1e', fg='white')
         self.copyright_text.grid(row=9, column=0, padx=0, pady=0, ipadx=0, ipady=0)
         self.copyright_text.place(relx=0.5, rely=1, y=-5, anchor="s")
 
