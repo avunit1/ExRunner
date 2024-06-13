@@ -22,6 +22,20 @@ pip install pillow pywin32
 
 After you have done this, right click the zip file you have downloaded from https://github.com/avunit1/ExRunner/releases and click extract. You can use the built-in Windows tool, or you can use a tool like WinRar or 7zip.
 
-Once you have extracted, open the extracted folder, and run ExRunner.exe as administrator and you're done!
+Once you have extracted, open the extracted folder, and run ExRunner.exe as administrator and you're done! Also, if you wish to run the main source file from CMD, please run cmd.exe with administrator privileges and cd into the directory the .py file is located, otherwise it will not run. 
 
-# IT IS VERY IMPORTANT TO NOT DELETE ANY FILES OR MODIFY ANITHYING, THE APP WILL NOT RUN IF YOU DO SO!
+Do not delete any files or modify anything, the app will not run if you do so.
+
+# Hashes
+
+MD5 hash for source code:
+
+```sh
+93aa8fc9376834ff125d4632aec45a56a7b32b548501f5ddf457466a181b9abc
+```
+
+MD5 hash for windows executable:
+
+```sh
+054d9913b4a4e31be747a778538cbe6ee52a7f43ded7058597d8dacfa32b2d50
+```
