@@ -14,6 +14,7 @@ packaging==24.1
 pefile==2023.2.7
 Pillow==10.1.0
 psutil==5.9.6
+py3nvml==0.2.7
 pycparser==2.22
 pycryptodome==3.20.0
 pyinstaller==6.8.0
@@ -35,3 +36,4 @@ trio-websocket==0.11.1
 typing_extensions==4.12.0
 urllib3==2.2.1
 wsproto==1.2.0
+xmltodict==0.13.0

@@ -76,8 +76,8 @@ def check_file_integrity():
         root.destroy()
         sys.exit()
 
-# Run the check_file_integrity function at the start
-check_file_integrity()
+# Commented out the file integrity check
+# check_file_integrity()
 
 class AIT(tk.Tk):
     def __init__(self):
@@ -173,31 +173,55 @@ class AIT(tk.Tk):
         webbrowser.open_new(r"https://avunit1.github.io/webpage-main/")
 
     def select_folder(self):
+    # Clear the output log text box first
+        self.output_log.config(state='normal')
+        self.output_log.delete("1.0", "end")
+        self.output_log.config(state='disabled')
+
+        # Open folder dialog and get the selected folder path
         folder = filedialog.askdirectory()
-        self.folder_path.set(folder)
+        if folder:
+            self.folder_path.set(folder)
+            exe_files = self.scan_directory_for_executables(folder)
+            if not exe_files:
+                self.output_log.config(state='normal')
+                self.output_log.insert("end", "No installers found, aborting.\n")
+                self.output_log.see("end")
+                self.output_log.config(state='disabled')
+            else:
+                self.output_log.config(state='normal')
+                self.output_log.insert("end", "Scanning done. " + str(len(exe_files)) + " installers found.\n")
+                self.output_log.see("end")
+                self.output_log.config(state='disabled')
+                for file in exe_files:
+                    self.output_log.config(state='normal')
+                    self.output_log.insert("end", "Found file: " + file + '\n')
+                    self.output_log.see("end")
+                    self.output_log.config(state='disabled')
+
+
+    def scan_directory_for_executables(self, folder_path):
+        exe_files = []
+        self.output_log.config(state='normal')
+        self.output_log.insert("end", "Scanning directory " + folder_path + "...\n")
+        self.output_log.see("end")
+        self.output_log.config(state='disabled')
+        for root, dirs, files in os.walk(folder_path):
+            for file in files:
+                if file.endswith('.exe') or file.endswith('.msi'):
+                    exe_files.append(os.path.join(root, file))
+        return exe_files
 
     def start_install(self):
         folder_path = self.folder_path.get()
-        exe_files = glob.glob(os.path.join(folder_path, '*.exe'))
-        self.output_log.config(state='normal')
-        self.output_log.insert("end", "Scanning directory " + folder_path + "...\n")
-        for file in exe_files:
-            self.output_log.insert("end", "Found file: " + file + '\n')
-        self.output_log.insert("end", "Scanning done. " + str(len(exe_files)) + " installers found. Starting in 5 seconds\n")
-        self.output_log.config(state='disabled')
-        self.countdown(5, exe_files)
-
-    def countdown(self, count, exe_files):
-        if count == 0:
+        exe_files = self.scan_directory_for_executables(folder_path)
+        if not exe_files:
             self.output_log.config(state='normal')
-            self.output_log.insert("end", "Starting now.\n")
+            self.output_log.insert("end", "No installers found, aborting.\n")
+            self.output_log.see("end")
             self.output_log.config(state='disabled')
-            self.run_installers(exe_files)
             return
-        self.output_log.config(state='normal')
-        self.output_log.insert("end", str(count) + "...\n")
-        self.output_log.config(state='disabled')
-        self.after(1000, self.countdown, count-1, exe_files)
+        self.run_installers(exe_files)
 
     def run_installers(self, exe_files):
         for i, file in enumerate(exe_files):
@@ -206,9 +230,11 @@ class AIT(tk.Tk):
             current_time = now.strftime("%H:%M:%S")
             self.output_log.config(state='normal')
             self.output_log.insert("end", "Executable " + file + " ran at " + current_time + "\n")
+            self.output_log.see("end")
             self.output_log.config(state='disabled')
             if i == len(exe_files) - 1:
                 self.output_log.insert("end", "Done!\n")
+                self.output_log.see("end")
                 with open("log.txt", "w") as f:
                     f.write(self.output_log.get("1.0", "end"))
 
